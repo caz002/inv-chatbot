@@ -117,6 +117,7 @@ workflow = create_swarm(
 )
 
 app = workflow.compile()
+st.title('Investment Advisor Chatbot')
 
 query = st.text_input("Enter your investment inqury:")
 

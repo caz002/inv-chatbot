@@ -1,6 +1,6 @@
 # Investment Chatbot
 
-A multi-agent AI investment chatbot that provides personalized advice on stock market trends. Uses swarm architecture to allow AI agents to trade off tasks with one another and collaborate to produce investment advice.
+A multi-agent AI investment chatbot that provides personalized advice on stock market trends. Uses swarm architecture to allow AI agents to trade off tasks with one another and collaborate to produce investment advice. Gathers information about stocks from Yahoo Finance.
 
 # Usage
 
