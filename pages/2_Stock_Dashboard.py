@@ -53,3 +53,32 @@ annual_financials = fetch_annual_financials(symbol)
 
 st.header('Financials')
 selection = st.segmented_control(label='Period', options=['Quarterly', 'Annual'], default='Quarterly')
+
+if selection == 'Quarterly':
+    quarterly_financials= quarterly_financials.rename_axis('Quarter').reset_index()
+    quarterly_financials['Quarter']=quarterly_financials['Quarter'].astype(str)
+    revenue_chart = alt.Chart(quarterly_financials).mark_bar(color='red').encode(
+        x='Quarter:O',
+        y='Total Revenue'
+    )
+   
+    net_income_chart = alt.Chart(quarterly_financials).mark_bar(color="orange").encode(
+        x='Quarter:O',
+        y='Net Income'
+    )
+    st.altair_chart(revenue_chart, use_container_width=True)
+    st.altair_chart(net_income_chart, use_container_width=True)
+if selection == 'Annual':
+    annual_financials=annual_financials.rename_axis('Year').reset_index()
+    annual_financials['Year']=annual_financials['Year'].astype(str).transform(lambda year: year.split('-')[0])
+    revenue_chart = alt.Chart(annual_financials).mark_bar(color="red").encode(
+        x='Year:O',
+        y='Total Revenue'
+    )
+   
+    net_income_chart = alt.Chart(annual_financials).mark_bar(color="orange").encode(
+        x='Year:O',
+        y='Net Income'
+    )
+    st.altair_chart(revenue_chart, use_container_width=True)
+    st.altair_chart(net_income_chart, use_container_width=True)
